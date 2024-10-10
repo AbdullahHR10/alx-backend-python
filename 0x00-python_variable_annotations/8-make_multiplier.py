@@ -3,6 +3,7 @@
 
 from typing import Callable
 
+
 def make_multiplier(multiplier: float) -> Callable[[float], float]:
     """Type-annotated function that takes a float multiplier and returns
     a function that multiplies a float by multiplier."""
