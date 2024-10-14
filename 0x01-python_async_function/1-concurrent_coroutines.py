@@ -8,7 +8,7 @@ wait_random = __import__('0-basic_async_syntax').wait_random
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
     """
-    Asynchronous coroutine that spawns wait_random n times 
+    Asynchronous coroutine that spawns wait_random n times
     and returns a list of delays in ascending order.
 
     Args:
