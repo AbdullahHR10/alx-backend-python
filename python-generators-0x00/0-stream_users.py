@@ -1,15 +1,10 @@
 """Create a generator that streams rows from an SQL database one by one."""
-import mysql.connector
+from seed import connect_to_prodev
 
 
 def stream_users():
     """Fetch rows one by one from the user_data table using a generator."""
-    connection = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="password",
-        database="ALX_prodev"
-    )
+    connection = connect_to_prodev()
     cursor = connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM user_data")
 
