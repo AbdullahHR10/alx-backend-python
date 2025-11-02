@@ -5,11 +5,12 @@ from seed import connect_to_prodev
 def stream_users():
     """Fetch rows one by one from the user_data table using a generator."""
     connection = connect_to_prodev()
-    cursor = connection.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM user_data")
+    if connection:
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM user_data")
 
-    for row in cursor:
-        yield row
+        for row in cursor:
+            yield row
 
-    cursor.close()
-    connection.close()
+        cursor.close()
+        connection.close()
