@@ -10,6 +10,7 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     email = models.EmailField(unique=True)
+    password_hash = models.CharField(max_length=50, null=False)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     ROLE_CHOICES = [
         ('guest', 'Guest'),
