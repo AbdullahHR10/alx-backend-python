@@ -11,6 +11,10 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['user_id', 'first_name', 'last_name', 'email', 'phone_number', 'role']
 
+    def get_full_name(self, obj):
+        """Return the user's full name."""
+        return f"{obj.first_name} {obj.last_name}".strip()
+
 
 class MessageSerializer(serializers.ModelSerializer):
     """Serialize Message model."""
