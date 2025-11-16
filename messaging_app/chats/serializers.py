@@ -5,7 +5,7 @@ from .models import User, Conversation, Message
 
 class UserSerializer(serializers.ModelSerializer):
     """Serialize User model."""
-    full_name = serializers.CharField(read_only=True)
+    full_name = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -17,12 +17,6 @@ class UserSerializer(serializers.ModelSerializer):
     def get_full_name(self, obj):
         """Return the user's full name."""
         return f"{obj.first_name} {obj.last_name}".strip()
-
-    def validate_full_name(self, value):
-        """Validate full_name."""
-        if not isinstance(value, str):
-            raise serializers.ValidationError("Full name must be a string.")
-        return value
 
 
 class MessageSerializer(serializers.ModelSerializer):
